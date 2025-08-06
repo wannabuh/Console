@@ -1,0 +1,12 @@
+{
+  "name": "com.wannabuh.console",
+  "version": "0.0.1",
+  "displayName": "Developer Console",
+  "description": "A developer console used for executing commands",
+  "dependencies": {
+  },
+  "author": {
+    "name": "Wannabuh",
+    "email": "wannabuh@sleepydemons.com"
+  }
+}

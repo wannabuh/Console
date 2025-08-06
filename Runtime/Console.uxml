@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Console/Console.uss?fileID=7433441132597879392&amp;guid=58dfdf578f20aa38c8d679f929f85e69&amp;type=3#Console" />
+    <ui:VisualElement name="Panel" class="panel" style="background-color: rgb(36, 36, 36);">
+        <ui:VisualElement name="History" class="history">
+            <ui:ListView name="HistoryList" horizontal-scrolling="false" allow-add="true" allow-remove="true" class="history-list" />
+        </ui:VisualElement>
+        <ui:TextField placeholder-text="Type a command..." name="CommandInputField" enabled="true" hide-placeholder-on-focus="false" class="input-row" style="color: rgb(108, 108, 108); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(243, 243, 243);" />
+    </ui:VisualElement>
+</ui:UXML>
