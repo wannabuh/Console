@@ -7,6 +7,7 @@ namespace Wannabuh.Console
     public class ConsoleBehaviour : MonoBehaviour
     {
         private VisualElement _ui;
+        private UIDocument _uiDocument;
         private ListView _historyList;
         private TextField _commandInputField;
         private Console _console;
@@ -29,8 +30,8 @@ namespace Wannabuh.Console
             
             Debug.Log(_styleSheet.name);
             
-            _ui = GetComponent<UIDocument>().rootVisualElement;
-            _ui.styleSheets.Add(_styleSheet);
+            _uiDocument = GetComponent<UIDocument>();
+            _ui = _uiDocument.rootVisualElement;
             _commandInputField = _ui.Q<TextField>("CommandInputField");
             _historyList = _ui.Q<ListView>("HistoryList");
             _console = new Console(GameContext.Instance);
