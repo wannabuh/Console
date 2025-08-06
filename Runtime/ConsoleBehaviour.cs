@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,7 +14,21 @@ namespace Wannabuh.Console
 
         private void Awake()
         {
-            _styleSheet = Resources.Load<StyleSheet>("Console");
+            // Temp fix for loading stylesheet from package
+            var allAssetPaths = AssetDatabase.GetAllAssetPaths();
+            var filename = "Console.uss";
+
+            for (int i = 0; i < allAssetPaths.Length; i++)
+            {
+                if (allAssetPaths[i].EndsWith(filename))
+                {
+                    _styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(allAssetPaths[i]);
+                    break;
+                }
+            }
+            
+            Debug.Log(_styleSheet.name);
+            
             _ui = GetComponent<UIDocument>().rootVisualElement;
             _ui.styleSheets.Add(_styleSheet);
             _commandInputField = _ui.Q<TextField>("CommandInputField");
