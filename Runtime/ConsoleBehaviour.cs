@@ -9,10 +9,13 @@ namespace Wannabuh.Console
         private ListView _historyList;
         private TextField _commandInputField;
         private Console _console;
+        private StyleSheet _styleSheet;
 
         private void Awake()
         {
+            _styleSheet = Resources.Load<StyleSheet>("Console");
             _ui = GetComponent<UIDocument>().rootVisualElement;
+            _ui.styleSheets.Add(_styleSheet);
             _commandInputField = _ui.Q<TextField>("CommandInputField");
             _historyList = _ui.Q<ListView>("HistoryList");
             _console = new Console(GameContext.Instance);
