@@ -6,6 +6,8 @@ namespace Wannabuh.Console
 {
     public class ConsoleBehaviour : MonoBehaviour
     {
+        public static ConsoleBehaviour Instance;
+        
         private VisualElement _ui;
         private ListView _historyList;
         private TextField _commandInputField;
@@ -14,6 +16,10 @@ namespace Wannabuh.Console
 
         private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
             _ui = GetComponent<UIDocument>().rootVisualElement;
             _commandInputField = _ui.Q<TextField>("CommandInputField");
             _historyList = _ui.Q<ListView>("HistoryList");
@@ -42,6 +48,11 @@ namespace Wannabuh.Console
             _historyList.RefreshItems();
             _commandInputField.value = "";
             _commandInputField.Focus();
+        }
+
+        public void ClearHistory()
+        {
+            _console.ClearHistory();
         }
     }
 }

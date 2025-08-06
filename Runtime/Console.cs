@@ -48,8 +48,13 @@ namespace Wannabuh.Console
                 return;
             }
             
-            consoleCommand.Execute(args);
             InputHistory.Add(input);
+            consoleCommand.Execute(args);
+        }
+
+        public void ClearHistory()
+        {
+            InputHistory.Clear();
         }
     }
 }
