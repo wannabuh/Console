@@ -7,7 +7,6 @@ namespace Wannabuh.Console
     public class ConsoleBehaviour : MonoBehaviour
     {
         private VisualElement _ui;
-        private UIDocument _uiDocument;
         private ListView _historyList;
         private TextField _commandInputField;
         private Console _console;
@@ -15,23 +14,7 @@ namespace Wannabuh.Console
 
         private void Awake()
         {
-            // Temp fix for loading stylesheet from package
-            var allAssetPaths = AssetDatabase.GetAllAssetPaths();
-            var filename = "Console.uss";
-
-            for (int i = 0; i < allAssetPaths.Length; i++)
-            {
-                if (allAssetPaths[i].EndsWith(filename))
-                {
-                    _styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(allAssetPaths[i]);
-                    break;
-                }
-            }
-            
-            Debug.Log(_styleSheet.name);
-            
-            _uiDocument = GetComponent<UIDocument>();
-            _ui = _uiDocument.rootVisualElement;
+            _ui = GetComponent<UIDocument>().rootVisualElement;
             _commandInputField = _ui.Q<TextField>("CommandInputField");
             _historyList = _ui.Q<ListView>("HistoryList");
             _console = new Console(GameContext.Instance);
